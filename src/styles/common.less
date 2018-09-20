@@ -1,0 +1,323 @@
+@import '~iview/src/styles/index.less';
+
+.fl() {
+  float: left;
+}
+
+//左浮动;
+.fr() {
+  float: right;
+}
+
+//缩进
+.indent(@indent: 2,@un:em){
+  text-indent: unit(@indent, @un);;
+}
+
+//右浮动;
+//清除浮动;
+.clear() {
+  *zoom: 1;
+  &:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+  }
+}
+
+/**
+ * 循环初始字体大小:
+ *     @end   : 结束字体大小(数字),必须输;
+ *     @begin : 开始字体大小(数字),可以省略;
+ *     @un    : 字体单位(字符串),可以省略;
+ *     例子   : .base-fonts(28);
+ */
+.base-fonts( @end,@begin:12,@un:px) when ( @begin =< @end ) {
+  .f-@{begin} {
+    font-size: unit(@begin, @un);
+  }
+  .base-fonts(@end, ( @begin+2 ), @un);
+}
+
+/**
+ * 循环初始默认样式:
+ *     @name  : 样式前缀名,必须输;
+ *    @style : 设置样式,必须输;
+ *    @end   : 结束样式,必须输;
+ *    @begin : 开始样式,可以省略;
+ *    @mult  : 循环累加倍数,可以省略;
+ *     @un    : 字体单位(字符串),可以省略;
+ *     例子   : .base-styles(mb,margin-bottom,30,5);
+ */
+.base-styles(@name:name,@style,@end,@begin:5,@mult:5,@un:px ) when ( @begin =< @end ) {
+  .@{name}-@{begin} {
+      @{style}: unit(@begin, @un) !important;
+  }
+  .base-styles(@name, @style, @end, (@begin+@mult), @mult, @un);
+}
+
+//一行显示
+.ellipsis() {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* 强制折行 */
+.break-word() {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+//设置字体;
+.f(@size:12,@un:px) {
+  font-size: unit(@size, @un) !important;
+}
+
+//设置字体;
+.fa(@family:'Microsoft Yahei') {
+  font-family: @family, '宋体', '黑体';
+}
+
+.ta(@direction){
+  text-align: @direction;
+}
+
+.ofh() {
+  overflow: hidden;
+}
+
+.ofv() {
+  overflow: visible !important;
+}
+
+.none() {
+  display: none;
+}
+
+.block() {
+  display: block;
+}
+
+.abs() {
+  position: absolute;
+}
+
+.rel() {
+  position: relative;
+}
+
+.pointer() {
+  cursor: pointer;
+}
+
+//css3过渡;
+.tran(@name:all,@time:2s) {
+  -webkit-transition: @name @time;
+  -moz-transition: @name @time;
+  -ms-transition: @name @time;
+  -o-transition: @name @time;
+  transition: @name @time;
+}
+
+//css3;
+.css3( @style,@frames ) {
+  -webkit-@{style} : @frames;
+  -moz-@{style} : @frames;
+  -ms-@{style} : @frames;
+  -o-@{style} : @frames;
+    @{style} : @frames;
+}
+
+//透明;
+.opa(@num:0.8) {
+  opacity: @num;
+  filter: ~'alpha(opacity='@num*100~')';
+}
+
+//css3圆角;
+.border-radius(@radius: 5px) {
+  -webkit-border-radius: @radius; /* Safari 和 Chrome */
+  -moz-border-radius: @radius; /* Firefox 4 */
+  -ms-border-radius: @radius; /* IE */
+  -o-border-radius: @radius; /* Opera */
+  border-radius: @radius;
+}
+
+/**
+ * css3动画,只能写在调用页面,配合.css3( @style,@frames )使用;
+ * 例子 :
+ * .keyframes(starts,{
+        0% {transform:rotate(0deg)}
+        100%{transform:rotate(360deg)}
+    });
+    .className{.css3(animation,starts 8s linear infinite .3s );}
+ */
+.keyframes(@name, @frames) {
+  @-webkit-keyframes @name { @frames();
+  }
+  @-moz-keyframes @name { @frames();
+  }
+  @-ms-keyframes @name { @frames();
+  }
+  @-o-keyframes @name { @frames();
+  }
+  @keyframes @name { @frames();
+  }
+}
+
+//打包默认样式;
+.common( @content: 1200, @unit: px) {
+  //缩进
+  .indent{
+    .indent();
+  }
+  /* 默认浮动 */
+  .fl {
+    .fl();
+  }
+  .fr {
+    .fr();
+  }
+  .clear {
+    .clear();
+  }
+  /* 显示隐藏 */
+  .none {
+    .none();
+  }
+  .show {
+    .block();
+  }
+  /* 文本方向 */
+  .tl {
+    .ta(left);
+  }
+  .tr {
+    .ta(right);
+  }
+  .tc {
+    .ta(center);
+  }
+  .tj{
+    .ta(justify);
+  }
+  .lh200{
+    line-height: 200%;
+  }
+  /* 截取 */
+  .ofh {
+    .ofh();
+  }
+  .ofv {
+    .ofv();
+  }
+  /* 定位 */
+  .abs {
+    .abs();
+  }
+  .rel {
+    .rel();
+  }
+  /* 鼠标手势 */
+  .pointer {
+    .pointer();
+  }
+  /* 省。。。 */
+  .ellipsis {
+    .ellipsis();
+  }
+  /* 强制折行 */
+  .break-word {
+    .break-word();
+  }
+  /* 默认颜色 */
+  .white{
+    color: #fff;
+  }
+  .red {
+    color: @error-color;
+  }
+  .blue {
+    color: @primary-color;
+  }
+  .gray {
+    color: #8f9ec2;
+  }
+  .yellow {
+    color: @warning-color;
+  }
+  .green {
+    color: @success-color;
+  }
+  /* 默认背景颜色 */
+  .bg-white {
+    background-color: #fff !important;
+  }
+  .bg-red {
+    background-color: @error-color !important;;
+  }
+  .bg-gray {
+    background-color: @layout-body-background !important;;
+  }
+  .bg-blue {
+    background-color: @primary-color !important;;
+  }
+  .bg-dark {
+    background-color: @menu-dark-title !important;;
+  }
+  .bg-darker {
+    background-color: darken(@menu-dark-title, 10%) !important;;
+  }
+  .bg-yellow {
+    background-color: @warning-color !important;;
+  }
+  .bg-green {
+    background-color: @success-color !important;;
+  }
+  /* 默认置灰 */
+  .disabled {
+    background-color: @slider-disabled-color;
+  }
+  /* 默认字体 */
+  .base-fonts(32,@un:@unit);
+  /* margin  padding */
+  .mt0 {
+    margin-top: 0 !important;
+  }
+  .base-styles(mt, margin-top, 30, 5,@un:@unit);
+  .mb0 {
+    margin-bottom: 0 !important;
+  }
+  .base-styles(mb, margin-bottom, 30, 5,@un:@unit);
+  .ml0 {
+    margin-left: 0 !important;
+  }
+  .base-styles(ml, margin-left, 30, 5,@un:@unit);
+  .mr0 {
+    margin-right: 0 !important;
+  }
+  .base-styles(mr, margin-right, 30, 5,@un:@unit);
+  .base-styles(pl, padding-left, 30, 5,@un:@unit);
+  .base-styles(pr, padding-right, 30, 5,@un:@unit);
+  .base-styles(pt, padding-top, 30, 5,@un:@unit);
+  .base-styles(pb, padding-bottom, 30, 5,@un:@unit);
+  .plr50{padding-left: 50px!important;padding-right: 50px!important;}
+  /* 高度 */
+  .base-styles(blk, height, 50, 5,@un:@unit);
+  /* 宽度 */
+  .w {
+    width: 100%
+  }
+  /* layout */
+  .layout {
+    max-width: unit(@content, @unit);
+    margin: 0 auto;
+  }
+}
+
+//默认初始化;
+.common();
