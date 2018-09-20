@@ -1,6 +1,3 @@
-说明: 一、此项目模板基于vue官方webpack模板，但对所有依赖包进行了升级，webpack版本已升级为 "^4.19.0"；
-     二、此项目编译配置中已写入sass、scss、less、stylus等css预处理器的loader配置，但是package.json配置文件中并未写入这些依赖包，可根据具体项目安装特定css预处理loader；
-
 # vue-webpack4plus
 
 > A Vue.js project
