@@ -2,6 +2,7 @@ const title = '江西产权交易中心'
 const routers = [
     {
         path: '/',
+        name: 'home',
         meta: {
             title: title
         },
@@ -27,6 +28,13 @@ const routers = [
             title: title + '-发展历程'
         },
         component: (resolve) => require(['./views/introduction/history.vue'], resolve)
+    },
+    {
+        path: '*',
+        meta: {
+            title: '访问出错啦'
+        },
+        component: (resolve) => require(['./views/errors/404.vue'], resolve)
     }
 ]
 export default routers

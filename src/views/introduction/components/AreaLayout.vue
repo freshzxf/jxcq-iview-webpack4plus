@@ -15,7 +15,8 @@
 </style>
 <template>
   <layout>
-    <div class="layout bg-white clear mt-20 mb-25 rel" style="padding-left: 200px">
+    <!--通过设置左填充为固定像素值配合某个子元素绝对定位不占空间来实现左右布局-->
+    <div class="layout bg-white clear mt-20 mb-25 rel" style="padding-left: 200px;min-height: 398px;">
 
       <!--左菜单-->
       <div class="side-menu">
@@ -74,7 +75,7 @@
       </div>
 
       <!--无名内容插槽（）-->
-      <slot></slot>
+      <slot class="bg-blue"></slot>
 
     </div>
   </layout>

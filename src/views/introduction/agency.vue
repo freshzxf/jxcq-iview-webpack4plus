@@ -8,7 +8,7 @@
 
     <!--layout内的结构会自动被添加入layout组件的默认插槽中-->
     <area-layout active-name="1">
-      <card class="main-contain" :bordered="false" dis-hover>
+      <card class="" :bordered="false" dis-hover>
         <p slot="title" class="tc">机构简介</p>
         <p slot="extra"></p>
         <div class="indent lh200 tj">
@@ -24,8 +24,8 @@
 
 </template>
 <script>
-  import BreadRouter from './BreadRouter'
-  import AreaLayout from './AreaLayout'
+  import BreadRouter from '../../components/BreadRouter'
+  import AreaLayout from './components/AreaLayout'
 
   export default {
     data () {

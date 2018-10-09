@@ -46,9 +46,9 @@
   </Layout>
 </template>
 <script>
-  import IconMenu from './IconMenu'
-  import TopNews from './TopNews'
-  import Partner from './Partner'
+  import IconMenu from './components/IconMenu'
+  import TopNews from './components/TopNews'
+  import Partner from './components/Partner'
   export default {
     data () {
       return {
