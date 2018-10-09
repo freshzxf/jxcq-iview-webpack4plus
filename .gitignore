@@ -5,6 +5,7 @@ testDistServer.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/server.js
 
 # Editor directories and files
 .idea
