@@ -13,7 +13,7 @@
     },
     data () {
       return {
-        src: '/static/img/error-404.svg'
+        src: '/static/img/error-500.svg'
       }
     },
     mounted () {
