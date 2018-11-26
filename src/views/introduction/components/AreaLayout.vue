@@ -51,7 +51,7 @@
             <Icon type="ios-keypad"></Icon>
             发展历程
           </MenuItem>
-          <MenuItem name="4" to="/agency">
+          <MenuItem name="4" to="/organization">
             <Icon type="ios-keypad"></Icon>
             组织架构
           </MenuItem>
