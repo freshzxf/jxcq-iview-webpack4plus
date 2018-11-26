@@ -30,6 +30,13 @@ const routers = [
         component: (resolve) => require(['./views/introduction/history.vue'], resolve)
     },
     {
+        path: '/organization',
+        meta: {
+            title: title + '-组织架构'
+        },
+        component: (resolve) => require(['./views/introduction/organization.vue'], resolve)
+    },
+    {
         path: '*',
         meta: {
             title: '访问出错啦'
