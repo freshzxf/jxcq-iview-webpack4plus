@@ -51,7 +51,7 @@
             <Icon type="ios-keypad"></Icon>
             发展历程
           </MenuItem>
-          <MenuItem name="4" :to="{name: 'organization', params: {id: 1,name: 'fresh'}}">
+          <MenuItem name="4" to="/organization">
             <Icon type="ios-keypad"></Icon>
             组织架构
           </MenuItem>
@@ -83,7 +83,7 @@
 
 <script>
   export default {
-    name: 'IntroductionLayout',
+    name: 'BusinessLayout',
     props: {
       activeName: {
         type: String,

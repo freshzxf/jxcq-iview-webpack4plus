@@ -22,22 +22,23 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
   // these devServer options should be customized in /config/index.js
   devServer: {
-    clientLogLevel: 'warning',
+    clientLogLevel: 'warning', // 可选值：error, none, warning, info
     historyApiFallback: {
       rewrites: [
         { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },
       ],
     },
-    hot: true,
+    // hot: true, // 需结合：new webpack.HotModuleReplacementPlugin()
+    hotOnly: true, // 在没有页面刷新的情况下启用热模块替换（请参阅devServer.hot）作为构建失败时的后备。
     contentBase: false, // since we use CopyWebpackPlugin.
-    compress: true,
+    compress: true, // 一切服务都启用zip压缩
     host: HOST || config.dev.host,
     port: PORT || config.dev.port,
     open: config.dev.autoOpenBrowser,
     overlay: config.dev.errorOverlay
       ? { warnings: false, errors: true }
       : false,
-    publicPath: config.dev.assetsPublicPath,
+    publicPath: config.dev.assetsPublicPath, // 需要和output对象中publicPath一致才能正常访问到打包后的文件（也才能看到效果）
     proxy: config.dev.proxyTable,
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
@@ -48,7 +49,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     /*new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
     }),*/
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin

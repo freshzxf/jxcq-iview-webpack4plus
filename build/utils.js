@@ -19,7 +19,7 @@ exports.assetsPath = function (_path) {
 }
 
 /**
- * 生成css的loader配置对象(对象格式,键值对,需要二次处理成负荷webpack格式)
+ * 生成css的loader配置对象(对象格式,键值对,需要二次处理成符合webpack格式)
  * @param options
  * @returns {{css: *, postcss: *, less: *, sass: *, scss: *, stylus: *, styl: *}}
  */

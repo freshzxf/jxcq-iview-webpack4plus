@@ -51,9 +51,11 @@
         <!--业务频道-->
         <Submenu name="3">
           <template slot="title">
-            业务频道
+            <router-link to="/business" tag="span">
+              业务频道
+            </router-link>
           </template>
-          <MenuItem name="3-1">
+          <MenuItem name="3-1" to="/business">
             <Icon type="ios-construct"/>
             产权交易
           </MenuItem>

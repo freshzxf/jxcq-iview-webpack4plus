@@ -29,6 +29,7 @@ var server= http.createServer(function(req, res){
     }else{
       res.writeHeader(200,{
         // 此配置只允许读取text文本页面，无法加载css、js等，因此需要注释掉
+        //'content-type' : 'text/html;charset="utf-8"'
       });
       res.write(data);//将index.html显示在客户端
       res.end();
