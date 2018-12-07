@@ -15,6 +15,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 分离css插件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 // 优化压缩css插件
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
